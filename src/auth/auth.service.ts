@@ -28,10 +28,11 @@ export class AuthService {
     authCredintialsDto: AuthCredintialsDto,
   ): Promise<{ accessToken: string }> {
     const { username, password } = authCredintialsDto;
+
     const user = await this.userRepository.findOne({ where: { username } });
 
     if (user && (await bcrypt.compare(password, user.password))) {
-      const payload: JwtPayload = { username };
+      const payload: JwtPayload = { username: username };
       const accessToken: string = await this.jwtService.sign(payload);
       return { accessToken };
     } else {
