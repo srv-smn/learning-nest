@@ -37,5 +37,7 @@ lerna-debug.log*
 
 # env
 
-.env.stage.dev
-.env.stage.prod
+env.stage.dev
+/.env.stage.prod
+/.env.stage.dev
+.env.stage.uat
